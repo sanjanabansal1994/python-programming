@@ -1,0 +1,3 @@
+roska;garbage
+laukku;bag
+auto;car
