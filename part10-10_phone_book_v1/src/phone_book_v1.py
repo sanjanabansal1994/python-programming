@@ -53,6 +53,7 @@ class PhoneBookApplication:
         print("0 exit")
         print("1 add entry")
         print("2 search")
+        print("3 search by number")
 
     def add_entry(self):
         name = input("name: ")
@@ -71,6 +72,14 @@ class PhoneBookApplication:
     def exit(self):
         self.__filehandler.save_file(self.__phonebook.all_entries())
 
+    def search_by_num(self):
+        number= input("number: ")
+        d = self.__phonebook.all_entries()
+        result = "unknown number"
+        for name in d.keys():
+            if number in d[name]:
+                result = name        
+        print(result)
 
     def execute(self):
         self.help()
@@ -84,9 +93,11 @@ class PhoneBookApplication:
                 self.add_entry()
             elif command == "2":
                 self.search()
+            elif command == "3":
+                self.search_by_num()
             else:
                 self.help()
 
-# when you run the tests, nothing apart from these two lines should be placed in the main function, outside any class definitions 
-application = PhoneBookApplication()
+application= PhoneBookApplication()
 application.execute()
+
